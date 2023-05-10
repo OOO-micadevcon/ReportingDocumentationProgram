@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class ConnectBase {
 	
-	public static Connection GetConnection() {
+	public static Connection GetConnection()  {
 		
 		//final String URL="jdbc:mysql://mysql104.1gb.ru/gb_storemica?useUnicode=true&characterEncoding=Cp1251&user=gb_storemica&password=Rz9YgHX-UKZD";
 		 final String URL = "jdbc:postgresql://127.0.0.1:5432/edudoc";
@@ -29,10 +29,11 @@ public class ConnectBase {
         }
         return connectionBase;
 	}
-	public static Statement GetStatementBase(Connection connectionBase) {
-		
-        Statement statement = null;
-        try {
+	public static Statement GetStatementBase(Connection connectionBase)  {
+		Statement statement = null;
+		try {
+		if(connectionBase==null)
+			throw new NullPointerException("connection=null");
         	statement = connectionBase.createStatement();
         }catch (SQLException throwables) {
             throwables.printStackTrace();

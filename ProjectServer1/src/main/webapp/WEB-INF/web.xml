@@ -78,4 +78,14 @@
     <servlet-name>Discipline</servlet-name>
     <url-pattern>/Discipline</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+  <display-name>PaperWork</display-name>
+    <servlet-name>PaperWork</servlet-name>
+    <jsp-file>/JspFiles/PaperWork.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaperWork</servlet-name>
+    <url-pattern>/PaperWork</url-pattern>
+  </servlet-mapping>
 </web-app>

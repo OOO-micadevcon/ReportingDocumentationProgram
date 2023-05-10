@@ -19,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 
@@ -71,12 +72,11 @@ public class Autorization extends HttpServlet
 			HttpSession session = request.getSession();
     		if(PersonData.SetAttributePerson(statement, request.getParameter("Email"), request.getParameter("Password"), session))
 				{
-				
 	    		// за выдачу имени
 	    		Cookie cookie = new Cookie("name",(String) session.getAttribute("current_name"));
 	    		cookie.setMaxAge(6000);
 	    		response.addCookie(cookie);
-		    		if(session.getAttribute("category")=="Студент")
+		    		if(Objects.equals(session.getAttribute("category"),"Студент"))
 		    			PersonData.SetAttributeStudent(statement, (Integer)session.getAttribute("id_person"),  session);
 		    		else if(session.getAttribute("category")=="Преподаватель")
 		    			;

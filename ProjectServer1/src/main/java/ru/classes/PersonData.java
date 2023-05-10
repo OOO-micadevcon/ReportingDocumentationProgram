@@ -12,7 +12,9 @@ public class PersonData {
 	public static boolean SetAttributePerson(Statement statement, String login, String password, HttpSession session) {
 		 ResultSet result = null;
 		 ResultSet resultCategory=null;
-		 try 
+		 if(session==null)
+			 return false;
+			 try 
 		 {
 			 result = statement.executeQuery("select * from \"Person\" where "+"login= '"+
 					 login+"' and "+ "password= '"+
@@ -27,7 +29,7 @@ public class PersonData {
 	    		
 				resultCategory= statement.executeQuery("SELECT name_category\r\n"
 						 		+ "FROM \"Person\"\r\n"
-						 		+ "JOIN \"Category\" ON "+session.getAttribute("id_person")+" = id_category;");
+						 		+ "JOIN \"Category\" ON category = id_category where id_person="+session.getAttribute("id_person")+";");
 				
 	    		if (resultCategory.next())
 		        	{
@@ -50,8 +52,9 @@ public class PersonData {
 		ResultSet result= statement.executeQuery("select * from \"Student_data\" where person="+id_student+";");
 		
 			if (result.next()){
-				session.setAttribute("group",result.getString("group"));
-				session.setAttribute("current_semester",result.getString("current_semester"));
+				session.setAttribute("id_student",result.getInt("id_student"));
+				session.setAttribute("group",result.getInt("group"));
+				session.setAttribute("current_semester",(Integer)result.getInt("current_semester"));
 	    	}
 		}
 		catch (SQLException throwables) {

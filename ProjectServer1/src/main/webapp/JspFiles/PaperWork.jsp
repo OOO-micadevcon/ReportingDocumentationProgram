@@ -30,13 +30,6 @@
         </div>
         </div>
     </header>
-    <% 
-			
-			PrintWriter pw = response.getWriter();
-			Connection connect=ConnectBase.GetConnection();
-			Statement statement =ConnectBase.GetStatementBase(connect);
-			ResultSet result = null;
-			%>
     <div>
     <table border="1">
    <caption>Список дисциплин</caption>
@@ -46,27 +39,24 @@
     <th>3</th>
     <th>4</th>
    </tr>
-   <%
-   PreparedStatement ps = connect.prepareStatement( "select * FROM \"Group_disciplines\" JOIN \"Discipline\" ON disciplines = id_discipline where \"group\"=? and semester=?" );
-   ps.setInt( 1, (Integer)session.getAttribute("group") );
-   ps.setInt( 2, (Integer)session.getAttribute("current_semester"));
+    <% 
+    		String id=request.getParameter("id");
+			PrintWriter pw = response.getWriter();
+			Connection connect=ConnectBase.GetConnection();
+			Statement statement =ConnectBase.GetStatementBase(connect);
+			ResultSet result = null;
+			ResultSet resultTeacher = null;
+			   PreparedStatement psTeacher = connect.prepareStatement( "SELECT * FROM \"Paper_work\" inner join \"Teacher_data\" ON (teacher = id_teacher) inner join \"Person\" ON (\"Teacher_data\".person =id_person  ) where id_work=?" );
+			   psTeacher.setInt( 1, Integer.parseInt(id) );
+
+			   resultTeacher = psTeacher.executeQuery();		
+    
+    PreparedStatement ps = connect.prepareStatement( "SELECT * FROM \"Paper_work\"  inner join \"Student_data\"  ON (student = id_student) inner join \"Work_type\" ON (type = id_work_type) inner join \"Person\" ON ( \"Student_data\".person = id_person) inner join \"Discipline\" ON (discipline = id_discipline) where id_work=?" );
+   ps.setInt( 1, Integer.parseInt(id) );
    result = ps.executeQuery();
-   
-   while(result.next())
-   {
-	   ResultSet resultWork = null;
-	   PreparedStatement pswork = connect.prepareStatement( "select * FROM \"Paper_work\" where \"student\"=? and semester=? and discipline=?" );
-	   pswork.setInt( 1, (Integer)session.getAttribute("id_student") );
-	   pswork.setInt( 2, (Integer)session.getAttribute("current_semester") );
-	   pswork.setInt( 3, result.getInt("id_discipline")  );
-	   resultWork = pswork.executeQuery();
-	   if ( resultWork.next()){
-		  /*  System.out.println(resultWork.getInt("student")); */
-	  
+     if ( result.next() && resultTeacher.next()){
    %>
-   <tr><td><a href="PaperWork?id=<%=resultWork.getInt("id_work")%>"><%=result.getString("name_discipline") %> </a></td><td>2</td><td>3</td><td>4</td></tr>
-   <% }} %>
-   </table>
-    </div>
-    </body>
-    </html>
+   <tr><td>Ученик:<%=result.getString("name")+" "+result.getString("Fname")+" "+result.getString("Oname") %></td><td>Дисциплина:<%=result.getString("name_discipline")%></td><td>3</td><td>4</td></tr>
+   <% } %>
+</body>
+</html>

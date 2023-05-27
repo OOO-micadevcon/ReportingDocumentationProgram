@@ -1,71 +1,60 @@
-* {
-	margin: 0;
-	padding: 0;
-}
- .margT
- {
- margin: 0px 0px 0px 10px;
- }
 body {
 
 	background: url('images/background.png') top left repeat;
-	margin: 70px 20px 40px 20px;
+	margin: 0 5% 0 5%;
 }
-.pageSup{
-	margin: 40px 40px 40px 40px;
+th, td {
+	padding: 40 px;
+	
+}
+.tableclm{
+	width:"200";
+}
+table {
+	background: #eee;
+	padding: 10px 0 0 0 ;
+	font-size: 20px;
+	margin:  auto;
+	border-collapse: collapse;
+    width: 100%; 
+}
+textarea{
+	background: #eee;
+	font-size: 18px;
+	border-collapse: collapse;
+    width: 99%;
+    resize: none;
+
+}
+.bottom
+{
+	color: #0000ff;
+	margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    text-align: center;
+}
+.title-name{
+	text-align: center;
+	color: #333;
+	font-family: calibri;
+	font-size: 22px;
+	text-shadow: 0px 1px 1px #fff;
+}
+.page {
+    overflow: hidden;
+    display: grid;
+    grid-template-areas: "header" "content" "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+.footer {
+    margin-top: auto;
+}
+.content{
+	margin: 70px 0 0 0;
 }
 
-ul>li {
-	margin: 0 0 0 10px;
-  line-height: 1.5;
-}
-ol>li{
-	 line-height: 2;
-}
-.blockSup{
-	display: flex;
-
-	 justify-content: flex-start;
-}
-.catalog
-{	display: flex;
-	padding: 10px 0px 0 10px;
-	font-size: 20px;
-	flex-flow: row wrap;
-	 text-align: center;
-    justify-content: flex-start;
-}
-.page-title{
-	font-size: 20px;
-}
-.page-data{
-	display: flex;
-	margin: 0 0 10px 0;
-}
-.page-margin{
-	margin: 0 10px 0 0;
-}
-.cen
-{	width: 240px;
-	margin: 0 10px 20px 0;
-}
-.form{
-	display: flex;
-	align-items: center;
-	width: 30%;
-}
-.form form {
-  max-width:800px;
-  padding:50px 70px;
-  border-radius:10px;
-  background-color:#c0c0c0;
-}
-#registration_container {
-	width: 357px;
-	height: 650px;
-	margin: 100px auto;
-	background: url('images/login_bg1.png') top left no-repeat;
-}
 /* ����� ���� header */
 .header-top{
 	line-height: 24px;
@@ -100,5 +89,10 @@ ol>li{
 .header-top a:hover{
 	background: #fff;
 }
-
-
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 6px;
+    background-color: #eee;
+    color: #333;
+}

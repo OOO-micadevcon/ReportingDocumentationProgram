@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import ru.classes.ConnectBase;
-import ru.classes.PersonData;
+import classes.ConnectBase;
+import classes.PersonData;
 
 class test {
 
@@ -25,7 +25,7 @@ class test {
 		PersonData junit= new PersonData();
 		String login="test";
 		String password="test";
-		assertEquals(false, junit.SetAttributePerson( statement,  login,  password, session));
+		assertEquals(false, junit.SetAttributePerson( connect,  login,  password, session));
 		try {
 			connect.close();
 			statement.close();

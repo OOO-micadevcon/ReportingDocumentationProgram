@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="jakarta.servlet.http.Cookie , ru.classes.*" %>
+<%@ page import="jakarta.servlet.http.Cookie , classes.*" %>
 <!DOCTYPE html>
 <html lang="ru" >
   <head>
-   <title>Авторизация</title>
+   <title>Авторизация
+   </title> <script src="https://www.google.com/recaptcha/api.js"></script>
     <link rel="stylesheet" type="text/css" href="public/login.css">
     <link rel="stylesheet" type="text/css" href="public/style.css">
   </head>
@@ -38,9 +39,12 @@
   <input class='text_input' type="password" name="Password" id="password-input" placeholder="Введите пароль" maxlength="30">
   <a href="#" class="password-control" onclick="return show_hide_password(this,1);"></a>
   </div>
-  <p class="login-text">Посчитайте пример:<a id="num1">1</a>+<a id="num2">2</a> </p> 
-<input class='text_input'  name="ReturnSum" id="ReturnSum"  maxlength="30">
-  <input class='text_input' class="create-account" type="submit" value="Отправить" onclick=" return checkForm()">
+ <div class="g-recaptcha"
+        data-sitekey="6LdaREQmAAAAAEqZRsL6_nNj270nuBaiNcr2hISg">
+      </div>
+<%  //<p class="login-text">Посчитайте пример:<a id="num1">1</a>+<a id="num2">2</a> </p> 
+// <input class='text_input'  name="ReturnSum" id="ReturnSum"  maxlength="30">%>
+  <input class='text_input' class="create-account" type="submit" value="Отправить" onclick="">
    <p class="login-text"><a  href="Registration">Регистрация</a> </p> 
   
   </form>
@@ -48,6 +52,11 @@
 </div>
       
   </body>
+  <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+ </script>
 <script>
 let num1=Math.round(Math.random()*100+1);
 let num2=Math.round(Math.random()*100+1);
@@ -57,12 +66,7 @@ document.getElementById("num2").innerHTML =num2;
   function checkForm()
   {
 
-    if (document.getElementById("ReturnSum").value != sum)
-  {
-    alert ('Капча решена неверно!');
-    return false;
-  }
-    else if (document.getElementById("password-input").value.trim() == '')
+    if (document.getElementById("password-input").value.trim() == '')
     {
     alert ('Заполните пароль');
     return false;

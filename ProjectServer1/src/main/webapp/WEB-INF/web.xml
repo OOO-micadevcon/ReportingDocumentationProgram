@@ -2,13 +2,13 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="5.0">
   <display-name>edudoc</display-name>
   <welcome-file-list>
-    <welcome-file>Index</welcome-file>
+    <welcome-file>Autorization</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
     <display-name>Registration</display-name>
     <servlet-name>Registration</servlet-name>
-    <servlet-class>ru.unlimit.Registration</servlet-class>
+    <servlet-class>servlet.Registration</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Registration</servlet-name>
@@ -16,63 +16,25 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Support</display-name>
-    <servlet-name>Support</servlet-name>
-    <jsp-file>/JspFiles/Support.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Support</servlet-name>
-    <url-pattern>/Support</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>Autorization</display-name>
     <servlet-name>Autorization</servlet-name>
-    <servlet-class>ru.unlimit.Autorization</servlet-class>
+    <servlet-class>servlet.Autorization</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Autorization</servlet-name>
     <url-pattern>/Autorization</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Index</display-name>
-    <servlet-name>Index</servlet-name>
-    <jsp-file>/JspFiles/Index.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Index</servlet-name>
-    <url-pattern>/Index</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Catalog</display-name>
-    <servlet-name>Catalog</servlet-name>
-    <jsp-file>/JspFiles/Catalog.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Catalog</servlet-name>
-    <url-pattern>/Catalog</url-pattern>
-  </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/public/*</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Pages</display-name>
-    <servlet-name>Pages</servlet-name>
-    <servlet-class>ru.unlimit.Page</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Pages</servlet-name>
-    <url-pattern>/Pages</url-pattern>
-  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>Discipline</display-name>
     <servlet-name>Discipline</servlet-name>
-    <jsp-file>/JspFiles/Discipline.jsp</jsp-file>
+    <jsp-file>/JspFiles/Student/Discipline.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>Discipline</servlet-name>
@@ -80,12 +42,72 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-  <display-name>PaperWork</display-name>
-    <servlet-name>PaperWork</servlet-name>
-    <jsp-file>/JspFiles/PaperWork.jsp</jsp-file>
+    <display-name>KillSession</display-name>
+    <servlet-name>KillSession</servlet-name>
+    <servlet-class>servlet.KillSession</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>PaperWork</servlet-name>
+    <servlet-name>KillSession</servlet-name>
+    <url-pattern>/KillSession</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Paperwork</display-name>
+    <servlet-name>Paperwork</servlet-name>
+    <servlet-class>servlet.Paperwork</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Paperwork</servlet-name>
     <url-pattern>/PaperWork</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DowloadManager</display-name>
+    <servlet-name>DowloadManager</servlet-name>
+    <servlet-class>servlet.DowloadManager</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DowloadManager</servlet-name>
+    <url-pattern>/DowloadFile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Group</display-name>
+    <servlet-name>Group</servlet-name>
+    <jsp-file>/JspFiles/Teacher/Group.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Group</servlet-name>
+    <url-pattern>/SearchGroup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DisciplineTeacher</display-name>
+    <servlet-name>DisciplineTeacher</servlet-name>
+    <jsp-file>/JspFiles/Teacher/DisciplineTeacher.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisciplineTeacher</servlet-name>
+    <url-pattern>/DisciplineTeacher</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PaperWorkTeacher</display-name>
+    <servlet-name>PaperWorkTeacher</servlet-name>
+    <jsp-file>/JspFiles/Teacher/PaperWorkTeacher.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaperWorkTeacher</servlet-name>
+    <url-pattern>/PaperWorkTeacher</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DataTeacherWork</display-name>
+    <servlet-name>DataTeacherWork</servlet-name>
+    <servlet-class>servlet.DataTeacherWork</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DataTeacherWork</servlet-name>
+    <url-pattern>/DataTeacherWork</url-pattern>
   </servlet-mapping>
 </web-app>

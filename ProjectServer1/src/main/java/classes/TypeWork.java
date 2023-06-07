@@ -5,10 +5,10 @@ public class TypeWork {
 	public static String defineTypeWork(String typeWork,String assessment) 
 	{
 		if(typeWork==null)
-			return "РќРµ РѕС‚РїСЂР°РІР»РµРЅР°";
+			return "Не отправлена";
 		else if(assessment==null)
-			return "РќР° РїСЂРѕРІРµСЂРєРµ";
+			return "На проверке";
 		else
-			return "РџСЂРѕРІРµСЂРµРЅР°";
+			return "Проверена";
 	}
 }

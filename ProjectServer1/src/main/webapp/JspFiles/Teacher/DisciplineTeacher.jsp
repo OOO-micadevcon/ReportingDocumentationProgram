@@ -8,6 +8,7 @@
    <title>Выбор дисциплины</title>
     <link rel="stylesheet" type="text/css" href="public/login.css">
     <link rel="stylesheet" type="text/css" href="public/style.css">
+    <script src="public/script.js"></script>
   </head>
     <body>
     <% 
@@ -21,7 +22,8 @@
        <jsp:include page="JspFiles/Teacher/header.jsp" />
 
     <div class="content" >
-      <table border="1">
+      <input class="form-control" type="text" placeholder="Поиск по критерию" id="search-text" onkeyup="tableSearch()">
+    <table border="1" id="info-table">
    <caption>Список дисциплин</caption>
      <tr>
     <th>Название группы</th>
@@ -29,7 +31,7 @@
     <th>Семестр обучения</th>
    </tr>
    <%
-   int semester=1;
+   int semester= TimeWork.currentSem();
    PreparedStatement ps = connect.prepareStatement( "SELECT * FROM \"Group_access\" inner join \"Group_disciplines\"  ON (group_disciplines = id_group_disciplines) inner join \"Groups\" ON ( \"Group_disciplines\".group = \"Groups\".id_group) inner join \"Discipline\" ON disciplines = id_discipline where teacher=? and half_year=?" );
    ps.setInt( 1, (Integer)session.getAttribute("id_teacher") );
    ps.setInt( 2, (Integer)semester);
@@ -38,7 +40,7 @@
    while(result.next())
    {
    %>
-   <tr><td><%=result.getString("name_group")%></td><td><%=result.getString("name_discipline")%></td><td><%=result.getString("semester")%></td><td> <button class="title-name" onclick="document.location='SearchGroup?group=<%=result.getInt("group")%>&semester=<%=result.getInt("semester") %>&disciplines=<%=result.getInt("disciplines") %>'">Подробнее</button></td></tr>
+   <tr><td><%=result.getString("name_group")%></td><td><%=result.getString("name_discipline")%></td><td><%=result.getString("semester")%></td><td> <button class="" onclick="document.location='SearchGroup?group=<%=result.getInt("group")%>&semester=<%=result.getInt("semester") %>&disciplines=<%=result.getInt("disciplines") %>'">Подробнее</button></td></tr>
    <% } %>
    </table>
     </div>

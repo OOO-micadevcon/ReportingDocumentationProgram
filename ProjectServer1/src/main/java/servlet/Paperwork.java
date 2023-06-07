@@ -25,9 +25,9 @@ import classes.ConnectBase;
 /**
  * Servlet implementation class Paperwork
  */
-@MultipartConfig(location = "C:\\Users\\micad\\Downloads\\СѓС‡РµР±Р°\\4 РєСѓСЂСЃ\\Р’РљР \\1\\VKR\\ProjectServer1\\src\\main\\java\\work",
+@MultipartConfig(location = "C:\\Users\\micad\\Downloads\\учеба\\4 курс\\ВКР\\1\\VKR\\ProjectServer1\\src\\main\\java\\work",
 fileSizeThreshold=1024*1024,
-maxFileSize=1024*1024*5, 
+maxFileSize=1024*1024*50, 
 maxRequestSize=1024*1024*5*5)
 public class Paperwork extends HttpServlet 
 {

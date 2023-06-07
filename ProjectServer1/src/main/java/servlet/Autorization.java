@@ -61,7 +61,7 @@ public class Autorization extends HttpServlet
 		if(!verify)
 		{
 			pw.println("<script charset=\"utf-8\">");
-    		pw.println("alert(\"РљР°РїС‡Р° РЅРµ РїСЂРѕР№РґРµРЅР°!\");");
+    		pw.println("alert(\"Капча не решена!\");");
     		pw.println("window.location.href = \"Autorization\";</script>");
 		}
 		Connection connect=ConnectBase.GetConnection();
@@ -75,16 +75,24 @@ public class Autorization extends HttpServlet
 	    		Cookie cookie = new Cookie("name",(String) session.getAttribute("current_name"));
 	    		cookie.setMaxAge(6000);
 	    		response.addCookie(cookie);
-		    		if(Objects.equals(session.getAttribute("category"),"РЎС‚СѓРґРµРЅС‚"))
+		    		if(Objects.equals(session.getAttribute("category"),"Студент"))
 		    		{
 		    			PersonData.SetAttributeStudent(connect, (Integer)session.getAttribute("id_person"),  session);
 		    			response.sendRedirect("Discipline");
 		    		}
 		    			
-		    		else if(Objects.equals(session.getAttribute("category"),"РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ"))
+		    		else if(Objects.equals(session.getAttribute("category"),"Преподаватель"))
 		    		{
 		    			PersonData.SetAttributeTeacher(connect, (Integer)session.getAttribute("id_person"),  session);
 		    			response.sendRedirect("DisciplineTeacher");
+		    		}
+		    		else if(Objects.equals(session.getAttribute("category"),"Специалист по УМР"))
+		    		{
+		    			response.sendRedirect("GroupYMR");
+		    		}
+		    		else if(Objects.equals(session.getAttribute("category"),"Администратор"))
+		    		{
+		    			response.sendRedirect("AddUser");
 		    		}
 		    			
 		    		 
@@ -92,7 +100,7 @@ public class Autorization extends HttpServlet
 	        else 
     	        	{
     	        		pw.println("<script charset=\"utf-8\">");
-    	        		pw.println("alert(\"РќРµРІРµСЂРЅС‹Рµ РґР°РЅРЅС‹Рµ!\");");
+    	        		pw.println("alert(\"Неверные данные для входа!\");");
     	        		pw.println("window.location.href = \"Autorization\";</script>");
     	        	}
     			try 

@@ -24,12 +24,10 @@
     <servlet-name>Autorization</servlet-name>
     <url-pattern>/Autorization</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/public/*</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>Discipline</display-name>
@@ -102,6 +100,26 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>PaperWorkYMR</display-name>
+    <servlet-name>PaperWorkYMR</servlet-name>
+    <jsp-file>/JspFiles/YMR/PaperWorkYMR.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaperWorkYMR</servlet-name>
+    <url-pattern>/PaperWorkYMR</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditStudent</display-name>
+    <servlet-name>EditStudent</servlet-name>
+    <jsp-file>/JspFiles/YMR/EditStudent.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditStudent</servlet-name>
+    <url-pattern>/EditStudent</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>DataTeacherWork</display-name>
     <servlet-name>DataTeacherWork</servlet-name>
     <servlet-class>servlet.DataTeacherWork</servlet-class>
@@ -109,5 +127,75 @@
   <servlet-mapping>
     <servlet-name>DataTeacherWork</servlet-name>
     <url-pattern>/DataTeacherWork</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArchiveWorksStudent</display-name>
+    <servlet-name>ArchiveWorksStudent</servlet-name>
+    <jsp-file>/JspFiles/Student/ArchiveWorksStudent.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArchiveWorksStudent</servlet-name>
+    <url-pattern>/ArchiveWorksStudent</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArchiveWorksTeacher</display-name>
+    <servlet-name>ArchiveWorksTeacher</servlet-name>
+    <jsp-file>/JspFiles/Teacher/ArchiveWorksTeacher.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArchiveWorksTeacher</servlet-name>
+    <url-pattern>/ArchiveWorksTeacher</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddUser</display-name>
+    <servlet-name>AddUser</servlet-name>
+    <servlet-class>servlet.AddUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUser</servlet-name>
+    <url-pattern>/AddUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateReport</display-name>
+    <servlet-name>CreateReport</servlet-name>
+    <servlet-class>servlet.CreateReport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateReport</servlet-name>
+    <url-pattern>/CreateReport</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GroupYMR</display-name>
+    <servlet-name>GroupYMR</servlet-name>
+    <jsp-file>/JspFiles/YMR/GroupYMR.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GroupYMR</servlet-name>
+    <url-pattern>/GroupYMR</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Error</display-name>
+    <servlet-name>Error</servlet-name>
+    <jsp-file>/JspFiles/Error.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Error</servlet-name>
+    <url-pattern>/Error</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PaperWorkCorrect</display-name>
+    <servlet-name>PaperWorkCorrect</servlet-name>
+    <servlet-class>servlet.PaperWorkCorrect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaperWorkCorrect</servlet-name>
+    <url-pattern>/PaperWorkCorrect</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -13,7 +13,9 @@ import java.sql.SQLException;
 public class PersonData {
 
 	public static boolean SetAttributePerson(Connection connect, String login, String password, HttpSession session) {
-		 ResultSet resultCategory=null;
+		String sole="SDFEGbdfbtj33";
+		String SecurityPassword=PasswordEncryptionService.md5Custom(password+sole); 
+		ResultSet resultCategory=null;
 		 if(session==null)
 			 return false;
 			 try 
@@ -21,12 +23,12 @@ public class PersonData {
 			 PreparedStatement query = connect.prepareStatement( "select * from \"Person\" where \"login\"="
 			 		+" ? and \"password\"= ?");
 				query.setString( 1, login );
-				query.setString( 2, password );
+				query.setString( 2, SecurityPassword );
 
 				ResultSet result =  query.executeQuery();
 			 if (result.next())
 			 { 
-	    		//за проверку
+	    		
 	    		session.setAttribute("id_person",result.getInt("id_person"));
 	    		session.setAttribute("current_name",result.getString("name"));
 	    		session.setAttribute("oname",result.getString("Oname"));

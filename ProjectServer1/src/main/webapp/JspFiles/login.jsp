@@ -12,9 +12,7 @@
   <body>
     <header>
       <div class="header-top">
-          <a href="/" >главная</a>
-		        <a href="">Магазин</a>
-		         <a href="Support" >Поддержка</a></span>
+          <a href="Autorization" >Главная</a>
         <div class="header-right">
         <% if(session.getAttribute("current_name") == null)
 	  	{%>
@@ -24,7 +22,7 @@
         else{%>
         Пользователь:<%= GetCookie.GetCookie(request, "name")%>
         <form method="POST" action="Autorization">
-        <input  type="submit" value="Выйти из аккаунта" name="kill">
+        <input class="button"  type="submit" value="Выйти из аккаунта" name="kill">
         </form>
         <%}%>
         </div>
@@ -33,19 +31,17 @@
     <div id="login_container">
     <div id="form_container"  >
       <form   action="Autorization" method="post">
- <p class="login-text">Авторизация на сайте</p>
-  <input class='text_input' type="text" name="Email"id="Email" placeholder="логин">
-  <div class="password">
-  <input class='text_input' type="password" name="Password" id="password-input" placeholder="Введите пароль" maxlength="30">
-  <a href="#" class="password-control" onclick="return show_hide_password(this,1);"></a>
+ <p class="login-text pad">Авторизация на сайте</p>
+  <input class='text_input pad' type="text" name="Email"id="Email" placeholder="логин">
+  <div class="password pad">
+  <input class='text_input pad' type="password" name="Password" id="password-input" placeholder="Введите пароль" maxlength="30">
+  <a href="#" class="password-control pad" onclick="return show_hide_password(this,1);"></a>
   </div>
- <div class="g-recaptcha"
+ <div class="g-recaptcha pad"
         data-sitekey="6LdaREQmAAAAAEqZRsL6_nNj270nuBaiNcr2hISg">
       </div>
-<%  //<p class="login-text">Посчитайте пример:<a id="num1">1</a>+<a id="num2">2</a> </p> 
-// <input class='text_input'  name="ReturnSum" id="ReturnSum"  maxlength="30">%>
-  <input class='text_input' class="create-account" type="submit" value="Отправить" onclick="">
-   <p class="login-text"><a  href="Registration">Регистрация</a> </p> 
+
+  <input class='log_button button ' type="submit" value="Отправить" onclick="">
   
   </form>
   </div>

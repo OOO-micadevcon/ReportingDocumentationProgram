@@ -30,29 +30,50 @@
    result = ps.executeQuery();
      if ( result.next() && resultTeacher.next())
      {
-   %>
-    <table border="1">
-   <caption>Данные о работе</caption>
-   <tr><td class="tableclm" >Ученик:</td><td><%=result.getString("name")+" "+result.getString("Fname")+" "+result.getString("Oname") %></tr>
-   <tr><td>Дисциплина:</td><td><%=result.getString("name_discipline")%></td></tr>
-   <tr><td>Тип работы:</td><td><%=result.getString("name_type")%></td></tr>
-   <tr><td>Проверяющий:</td><td><%=resultTeacher.getString("name")+" "+resultTeacher.getString("Fname")+" "+resultTeacher.getString("Oname") %></td></tr>
-   <tr><td>Статус:</td><td><%=TypeWork.defineTypeWork(result.getString("name_file_work"),result.getString("assessment"))  %></td></tr><%;
-     %> 
-   <% if(result.getString("name_file_work")==null){ %>
-  
-   <form action = "PaperWork?id=<%=id %>" method = "post" enctype = "multipart/form-data">
-   <tr><td>Письменная работа:</td><td><input class="title-name bottom" accept=".pdf" type = "file" name = "file" size = "50" />
-   <input class="title-name bottom" type = "submit" value = "Upload File" />
-   </td></tr>  
-      </form>
-      <% }
-   	else
-      {
-    	  %><tr><td>Письменная работа:</td><td><a href="<%="DowloadFile?id="+result.getString("name_file_work") %>" download="" title="Загруженная работа в формате .pdf">Скачать</a></td></tr>
-    	  <% 
-       }
-   }%>
+		   %>
+		    <table border="1">
+		   <caption>Данные о работе</caption>
+		   <tr><td class="tableclm" >Ученик:</td><td><%=result.getString("name")+" "+result.getString("Fname")+" "+result.getString("Oname") %></tr>
+		   <tr><td>Дисциплина:</td><td><%=result.getString("name_discipline")%></td></tr>
+		   <tr><td>Тип работы:</td><td><%=result.getString("name_type")%></td></tr>
+		   <tr><td>Проверяющий:</td><td><%=resultTeacher.getString("name")+" "+resultTeacher.getString("Fname")+" "+resultTeacher.getString("Oname") %></td></tr>
+		   <tr><td>Статус:</td><td><%=TypeWork.defineTypeWork(result.getString("name_file_work"),result.getString("assessment"))  %></td></tr>
+		   <% 
+		   if(result.getString("correct_file_work")==null)
+		   {
+		   if(result.getString("name_file_work")==null )
+		   { %>
+		  
+		   <form action = "PaperWork?id=<%=id %>" method = "post" enctype = "multipart/form-data">
+		   <tr><td>Письменная работа:</td><td><input class="size bottom" accept=".pdf" type = "file" name = "file" size = "50" />
+		   <input class="size bottom" type = "submit" value = "Загрузить файл" />
+		   </td></tr>  
+		      </form>
+		    <% 
+		   }
+		   else
+		      {
+		    	  %><tr><td>Письменная работа:</td><td><a href="<%="DowloadFile?id="+result.getString("name_file_work") %>" download="" title="Загруженная работа в формате .pdf">Скачать</a></td></tr>
+		    <% }
+		    }%>
+   
+		   <% if(result.getString("correct_file_work")==null && result.getString("comment")!=null)
+		   { %>
+		  
+		   <form action = "PaperWorkCorrect?id=<%=id %>" method = "post" enctype = "multipart/form-data">
+		   <tr><td>Рецензированная работа:</td><td><input class="title-name bottom" accept=".pdf" type = "file" name = "file" size = "50" />
+		   <input class=" bottom" type = "submit" value = "Upload File" />
+		   </td></tr>  
+		      </form>
+		      <% }
+			   	else if (result.getString("comment")!=null)
+			      {
+			    	  %><tr><td>Рецензированная работа:</td><td><a href="<%="DowloadFile?id="+result.getString("name_file_work") %>" download="" title="Загруженная работа в формате .pdf">Скачать</a></td></tr>
+			    	  <% 
+			       }
+			   %>
+   
+   
    <tr><td>Срок сдачи:</td><td><%=result.getString("date_end_work")%></td></tr>
    <%
    if(result.getString("link_AP")==null)
@@ -80,13 +101,13 @@
     if(result.getString("assessment")==null)
    		{ %>
   
-	<tr><td>Замечания к работе:</td><td>Работа не проверена</td></tr>  	 
+	<tr><td>Оценка:</td><td>Работа не проверена</td></tr>  	 
 <%
         }
      else
      {%> 
     	 <tr><td>Оценка:</td><td><%=resultTeacher.getString("assessment")%></td></tr>
-     <% }%>
+     <%}}%>
      
     
        </table>

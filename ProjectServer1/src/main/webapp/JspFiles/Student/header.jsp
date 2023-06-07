@@ -5,8 +5,8 @@
 <header class="header-top">
             
       <div class="header-top">
-          <a href="/" >Главная</a>
-		        <a href="">Архив работ</a>
+          <a href="Discipline" >Текущие работы</a>
+		        <a href="ArchiveWorksStudent">Архив работ</a>
         <div class="header-right">
         <% if(session.getAttribute("current_name") == null)
 	  	{%>
@@ -14,9 +14,9 @@
 		
 		<%} 
         else{%>
-        Пользователь:<%= GetCookie.GetCookie(request, "name")%>
+        Студент:<%= GetCookie.GetCookie(request, "name")%>
         <form method="POST" action="KillSession">
-        <input  type="submit" value="Выйти из аккаунта" name="kill">
+        <input class="size button"  type="submit" value="Выйти из аккаунта" name="kill">
         </form>
         <%}%>
         </div>

@@ -8,6 +8,7 @@
    <title>Письменные работы</title>
     <link rel="stylesheet" type="text/css" href="public/login.css">
     <link rel="stylesheet" type="text/css" href="public/style.css">
+    <script src="public/script.js"></script>
   </head>
   <body>
   <div class="page">
@@ -19,7 +20,8 @@
 			ResultSet result = null;
 			%>
     <div class="content" >
-    <table border="1">
+    <input class="form-control" type="text" placeholder="Поиск по критерию" id="search-text" onkeyup="tableSearch()">
+    <table border="1" id="info-table">
    <caption>Список дисциплин</caption>
      <tr>
     <th>Дисциплина</th>
@@ -46,7 +48,7 @@
    %>
    <tr><td><%=result.getString("name_discipline") %></td><td><%=resultWork.getString("name_type")%></td>
    <td><%=TypeWork.defineTypeWork(resultWork.getString("name_file_work"),resultWork.getString("assessment"))  %></td>
-   <td> <button class="title-name" onclick="document.location='PaperWork?id=<%=resultWork.getInt("id_work")%>'">Подробнее</button></td></tr>
+   <td> <button  onclick="document.location='PaperWork?id=<%=resultWork.getInt("id_work")%>'">Подробнее</button></td></tr>
    <% }} %>
    </table>
     </div>

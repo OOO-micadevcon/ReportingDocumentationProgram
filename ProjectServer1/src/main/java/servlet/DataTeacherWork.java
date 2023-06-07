@@ -71,7 +71,8 @@ public class DataTeacherWork extends HttpServlet {
 			else {
 				{
 	        		pw.println("<script charset=\"utf-8\">");
-	        		pw.println("alert(\"Ошибка на сервере!"+request.getParameter("assessment")+request.getParameter("id_work")+request.getParameter("comment")+"\");");
+	        		pw.println("alert(\"������\"");
+	        		//pw.println("alert(\"Ошибка на сервере!"+request.getParameter("assessment")+request.getParameter("id_work")+request.getParameter("comment")+"\");");
 	        		pw.println("window.location.href = \""+completeURL+"\";</script>");
 	        	}
 			}

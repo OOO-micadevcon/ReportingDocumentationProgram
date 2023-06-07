@@ -41,7 +41,7 @@ public class DowloadManager extends HttpServlet {
 	
 	public void SendFile(HttpServletResponse response, HttpServletRequest request) throws IOException 
 	{
-		String Path="C:\\Users\\micad\\Downloads\\СѓС‡РµР±Р°\\4 РєСѓСЂСЃ\\Р’РљР \\1\\VKR\\ProjectServer1\\src\\main\\java\\work\\";
+		String Path="C:\\Users\\micad\\Downloads\\учеба\\4 курс\\ВКР\\1\\VKR\\ProjectServer1\\src\\main\\java\\work\\";
 		String name=request.getParameter("id");
 		String fileName=Path+name;
 		File file = new File(fileName);

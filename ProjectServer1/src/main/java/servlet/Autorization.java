@@ -75,6 +75,14 @@ public class Autorization extends HttpServlet
 	    		Cookie cookie = new Cookie("name",(String) session.getAttribute("current_name"));
 	    		cookie.setMaxAge(6000);
 	    		response.addCookie(cookie);
+	    		
+	    		Cookie cookie1 = new Cookie("fname",(String) session.getAttribute("fname"));
+	    		cookie1.setMaxAge(6000);
+	    		response.addCookie(cookie1);
+	    		
+	    		Cookie cookie2 = new Cookie("oname",(String) session.getAttribute("oname"));
+	    		cookie2.setMaxAge(6000);
+	    		response.addCookie(cookie2);
 		    		if(Objects.equals(session.getAttribute("category"),"Студент"))
 		    		{
 		    			PersonData.SetAttributeStudent(connect, (Integer)session.getAttribute("id_person"),  session);

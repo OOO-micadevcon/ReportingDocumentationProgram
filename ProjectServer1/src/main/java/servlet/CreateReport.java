@@ -13,6 +13,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.rmi.server.ExportException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,6 +35,7 @@ import com.spire.doc.TableRow;
 import com.spire.doc.documents.HorizontalAlignment;
 import com.spire.doc.documents.Paragraph;
 import com.spire.doc.documents.ParagraphStyle;
+import com.spire.doc.documents.RowAlignment;
 import com.spire.doc.documents.VerticalAlignment;
 import com.spire.doc.fields.TextRange;
 
@@ -64,9 +66,11 @@ public class CreateReport extends HttpServlet {
 		String fileName=Path+name;
 		Connection connect=ConnectBase.GetConnection();
 		Statement statement =ConnectBase.GetStatementBase(connect);
+	
 		ResultSet result = null;
 		ResultSet resultTeacher = null;
 		String Fname=null;
+		
 	        //Создать документ Word
 	        Document document = new Document();
 	        try 
@@ -76,7 +80,7 @@ public class CreateReport extends HttpServlet {
 			   resultTeacher = psTeacher.executeQuery();	
 			   if ( resultTeacher.next())
 			     {
-					Fname=resultTeacher.getString("Fname");
+					Fname=resultTeacher.getString("Fname")+" "+resultTeacher.getString("name").charAt(0)+"."+resultTeacher.getString("Oname").charAt(0)+".";
 				}
 			}
 	        catch (SQLException e) {
@@ -145,7 +149,7 @@ public class CreateReport extends HttpServlet {
 	        	TableRow row1 = new TableRow(document);
 	            TableCell tc = row1.addCell();
 	            Paragraph paragraph = tc.addParagraph();
-	            paragraph.appendText(result.getString("Fname"));
+	            paragraph.appendText(result.getString("Fname")+" "+result.getString("name").charAt(0)+"."+result.getString("Oname").charAt(0)+".");
 	            
 	            tc = row1.addCell();
 	            paragraph = tc.addParagraph();
@@ -171,20 +175,43 @@ public class CreateReport extends HttpServlet {
 	            
 	            table.getRows().add(row1);
 	        }
-			/* table.addRow(); */
-	       
-			/*
-			 * //Добавьте картинки в абзац 4 Paragraph para4 = section.addParagraph();
-			 * DocPicture picture = para4.appendPicture("pic2.jpg");
-			 */
-			/*
-			 * //Установить ширину изображения picture.setWidth(300f); //Установить высоту
-			 * изображения picture.setHeight(250f);
-			 */
+	        Paragraph para11 = section.addParagraph();
+	        para11.appendText("\r\n");
+	        
+	        String[] Stringnum1 = {"Ниже 60", "60-64", "65-69", "70-74", "75-84","85-89","90-100"};
+	        String[] Stringnum2 = {"неудовл.", "удовлетв.", "", "хорошо", "","","отлично"};
+	        String[] Stringnum3 = {"F", "E", "D", "", "C","B","A"};
+	        Table table1 = section.addTable(true);
+	        TableRow row2 = new TableRow(document);
+	        for (int i = 0; i < 7; i++) {
+	        	
+	            TableCell tc = row2.addCell();
+	            Paragraph paragraph = tc.addParagraph();
+	            paragraph.appendText(Stringnum1[i]);
+	        }
+	        table1.getRows().add(row2);
+	        TableRow row3 = new TableRow(document);
+	        for (int i = 0; i < 7; i++) {
+	        	TableCell tc = row3.addCell();
+	            Paragraph paragraph = tc.addParagraph();
+	            paragraph.appendText(Stringnum2[i]);
+	        }
+	        table1.getRows().add(row3);
+	        TableRow row4 = new TableRow(document);
+	        for (int i = 0; i < 7; i++) {
+	        	TableCell tc = row4.addCell();
+	            Paragraph paragraph = tc.addParagraph();
+	            paragraph.appendText(Stringnum3[i]);
+	        }
+	        table1.getRows().add(row4);
+	        table1.applyHorizontalMerge(1, 1, 2);
+	        table1.applyHorizontalMerge(1, 3, 5);
+	        table1.applyHorizontalMerge(2, 2, 3);
 	        Paragraph para8 = section.addParagraph();
-	        para8.appendText("\n\n\n______________/__________/");
-	        //Используйте первый абзац в качестве заголовка и отформатируйте заголовок
+	        para8.appendText("\n\n\n  Декан ФАЭТ/__________/С.Н. Грицюк");
+	        // первый абзац в качестве заголовка и отформатируйте заголовок
 	        ParagraphStyle style1 = new ParagraphStyle(document);
+	        table1.getTableFormat().setHorizontalAlignment(RowAlignment.Right);
 	        style1.setName("titleStyle");
 	        style1.getCharacterFormat().setBold(true);
 	        style1.getCharacterFormat().setTextColor(Color.black);
@@ -192,7 +219,6 @@ public class CreateReport extends HttpServlet {
 	        style1.getCharacterFormat().setFontSize(10f);
 	        document.getStyles().add(style1);
 	        para1.applyStyle("titleStyle");
-	        //Используйте первый абзац в качестве заголовка и отформатируйте заголовок
 	        ParagraphStyle style4 = new ParagraphStyle(document);
 	        style4.setName("titleStyle4");
 	        
@@ -202,25 +228,13 @@ public class CreateReport extends HttpServlet {
 	        document.getStyles().add(style4);
 	        para4.applyStyle("titleStyle4");
 
-			/*
-			 * //Установите формат абзацев 2 и 3 ParagraphStyle style2 = new
-			 * ParagraphStyle(document); style2.setName("paraStyle");
-			 * style2.getCharacterFormat().setFontName("Times New Roman");
-			 * style2.getCharacterFormat().setFontSize(11f);
-			 * document.getStyles().add(style2); para2.applyStyle("paraStyle");
-			 * para3.applyStyle("paraStyle");
-			 */
+			
 
-	        //Установите абзац 1 и абзац 4 для выравнивания по центру по горизонтали
+	        //абзац 1 и абзац 4 для выравнивания по центру по горизонтали
 	        para1.getFormat().setHorizontalAlignment(HorizontalAlignment.Center);
 			 para4.getFormat().setHorizontalAlignment(HorizontalAlignment.Center); 
-
-				/*
-				 * //Установите отступ начала второго и третьего абзацев
-				 * para2.getFormat().setFirstLineIndent(25f);
-				 * para3.getFormat().setFirstLineIndent(25f);
-				 */
-
+			 
+				
 	        //Установите пробел после абзаца 1, 2 и 3
 	        para1.getFormat().setAfterSpacing(15f);
 	        para2.getFormat().setAfterSpacing(10f);
@@ -294,25 +308,12 @@ public class CreateReport extends HttpServlet {
 	public static Integer TimeYearsNow()
 	{
 		Calendar now = Calendar.getInstance();
-		/*
-		 * String pattern = "yyyy"; SimpleDateFormat sdf = new
-		 * SimpleDateFormat(pattern); try {
-		 * now.setTime(sdf.parse(sdf.format(now.getTime()))); } catch (ParseException e)
-		 * {e.printStackTrace();}
-		 */
 	    return now.get(Calendar.YEAR);
 	}
 	public static Integer TimeYearsLastNow()
 	{
 		Calendar now = Calendar.getInstance();
 		now.add(Calendar.YEAR, -1);
-		/*String pattern = "yyyy";
-	    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-	    try 
-	    {
-	    	now.setTime(sdf.parse(sdf.format(now.getTime())));
-	    }*/
-		/* catch (ParseException e) {e.printStackTrace();} */
 	    return now.get(Calendar.YEAR);
 	}
 

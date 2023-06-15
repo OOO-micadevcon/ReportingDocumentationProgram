@@ -1,11 +1,12 @@
 body {
-
-	
 	margin: 0 5% 0 5%;
 }
 th, td {
 	padding: 40 px;
 	
+}
+.fotobiti{
+  height: 60px; 
 }
 .center {
 	background: #ffffff;
@@ -89,10 +90,14 @@ button
     margin-top: auto;
 }
 .content{
-	margin: 70px 0 0 0;
+	margin: 90px 0 0 0;
 }
-
+.Pmenu
+{
+	margin-bottom: 10px;
+}
 .header-top{
+	
 	line-height: 24px;
 	background: rgb(0, 87, 184);
 	text-transform: uppercase;

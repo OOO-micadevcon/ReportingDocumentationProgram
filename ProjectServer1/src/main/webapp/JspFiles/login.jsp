@@ -12,6 +12,7 @@
   <body>
     <header>
       <div class="header-top">
+      <input class="size fotobiti" type="image" src="public/images/logoBiti1.png" href="Autorization">
           <a href="Autorization" >Главная</a>
         <div class="header-right">
         <% if(session.getAttribute("current_name") == null)
@@ -20,7 +21,7 @@
 		
 		<%} 
         else{%>
-        Пользователь:<%= GetCookie.GetCookie(request, "name")%>
+        <i class="menucolor">Пользователь: <%= GetCookie.GetCookie(request, "fname")+" "+GetCookie.GetCookie(request, "name").charAt(0)+". "+GetCookie.GetCookie(request, "oname").charAt(0)+"."%></i>
         <form method="POST" action="Autorization">
         <input class="button"  type="submit" value="Выйти из аккаунта" name="kill">
         </form>

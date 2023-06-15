@@ -31,7 +31,7 @@
    result = ps.executeQuery();
      if ( result.next() && resultTeacher.next())
      {
-    	 if(result.getString("link_AP")==null & result.getString("comment")==null&result.getString("assessment")==null)
+    	 if(result.getString("name_file_work")!=null && result.getString("comment")==null || (result.getString("correct_file_work")!=null&&result.getString("assessment")==null))
     	 { 
     %>
     		  <form action = "DataTeacherWork?id_work=<%=id %>" method = "post"id="myform" >
@@ -45,30 +45,39 @@
    <tr><td>Статус:</td><td><%=TypeWork.defineTypeWork(result.getString("name_file_work"),result.getString("assessment"))  %></td></tr><%;
      %>
     <% 	
-    if(result.getString("name_file_work")==null)
+    if(result.getString("correct_file_work")==null)
    		{ 
    	%>
-         	<tr><td>Письменная работа:</td><td>Письменная работа не загружена</td></tr>
+         	<tr><td>Визированная работа:</td><td>Визированная работа не загружена</td></tr>
    	<%
         }
     else
      	{
    	%>  
-   			<tr><td>Письменная работа:</td><td><a href="<%="DowloadFile?id="+result.getString("name_file_work") %>" download="" title="Загруженная работа в формате .pdf">Скачать</a></td></tr><%;
+   			<tr><td>Визированная работа:</td><td><a href="<%="DowloadFile?id="+result.getString("correct_file_work") %>" download="" title="Загруженная работа в формате .pdf">Скачать</a></td></tr><%;
     	}
+    if(result.getString("name_file_work")==null)
+		{ 
+	%>
+     	<tr><td>Письменная работа:</td><td>Письменная работа не загружена</td></tr>
+	<%
+    }
+else
+ 	{
+	%>  
+			<tr><td>Письменная работа:</td><td><a href="<%="DowloadFile?id="+result.getString("name_file_work") %>" download="" title="Загруженная работа в формате .pdf">Скачать</a></td></tr><%;
+	}
      %>
     		<tr><td>Срок сдачи:</td><td><%=result.getString("date_end_work")%></td></tr>
     <% 	
-    if(result.getString("link_AP")==null)
+    if(result.getString("correct_file_work")!=null && result.getString("link_AP")==null)
    		{ %>
   
   	    <tr><td>Ссылка на антиплагиат:</td><td> <input class='text_input'form="myform" type="text" name="link_AP"id="link_AP" placeholder="Ссылка на АП"></td></tr>
   	 <%
-  
-        
         }
     
-     else
+     else if(result.getString("link_AP")!=null)
      {
      %>
     	 <tr><td>Ссылка на антиплагиат:</td><td><%=result.getString("link_AP")%></td></tr>
@@ -87,20 +96,20 @@
     	 <%
      }
       
-       if(result.getString("assessment")==null)
+       if(result.getString("correct_file_work")!=null &&result.getString("assessment")==null)
    		{ %>
   	    <tr><td>Оценка:</td><td> <input class='text_input' type="text" form="myform" name="assessment"id="assessment" placeholder="Оценка"></td></tr><%;
         }
       
-     else
+     else if(result.getString("assessment")!=null)
      {
      %>
     	<tr><td>Оценка:</td><td><%=resultTeacher.getString("assessment")%></td></tr>
     	<%
      }
-       if(result.getString("link_AP")==null & result.getString("comment")==null&result.getString("assessment")==null&result.getString("name_file_work")!=null)
+       if(result.getString("name_file_work")!=null && result.getString("comment")==null || (result.getString("correct_file_work")!=null&&result.getString("assessment")==null))
   		{ %>
-  		<tr><td colspan="2" class="bottom"><input class="title-name bottom" type = "submit"  value = "Отправить" /></td></tr>
+  		<tr><td colspan="2" class="bottom"><input class="size button" type = "submit"  value = "Отправить" /></td></tr>
        <% }
       
       

@@ -60,15 +60,24 @@
 		   <% if(result.getString("correct_file_work")==null && result.getString("comment")!=null)
 		   { %>
 		  
+		  
+		   <tr>
+		   
+		   <td>Визированная работа:</td>
+		    
+		   <td>
 		   <form action = "PaperWorkCorrect?id=<%=id %>" method = "post" enctype = "multipart/form-data">
-		   <tr><td>Рецензированная работа:</td><td><input class="title-name bottom" accept=".pdf" type = "file" name = "file" size = "50" />
-		   <input class=" bottom" type = "submit" value = "Upload File" />
-		   </td></tr>  
-		      </form>
+		   <input class="bottom" accept=".pdf" type = "file" name = "file" size = "50" />
+		   <input class="size bottom" type = "submit" value = "Загрузить файл" /></form>
+		   
+		   </td>
+		  
+		   </tr>  
+		      
 		      <% }
 			   	else if (result.getString("comment")!=null)
 			      {
-			    	  %><tr><td>Рецензированная работа:</td><td><a href="<%="DowloadFile?id="+result.getString("name_file_work") %>" download="" title="Загруженная работа в формате .pdf">Скачать</a></td></tr>
+			    	  %><tr><td>Визированная работа:</td><td><a href="<%="DowloadFile?id="+result.getString("name_file_work") %>" download="" title="Загруженная работа в формате .pdf">Скачать</a></td></tr>
 			    	  <% 
 			       }
 			   %>

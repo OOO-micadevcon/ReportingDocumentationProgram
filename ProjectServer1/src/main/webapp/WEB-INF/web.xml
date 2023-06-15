@@ -198,4 +198,44 @@
     <servlet-name>PaperWorkCorrect</servlet-name>
     <url-pattern>/PaperWorkCorrect</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddGroup</display-name>
+    <servlet-name>AddGroup</servlet-name>
+    <servlet-class>servlet.AddGroup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddGroup</servlet-name>
+    <url-pattern>/AddGroup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddDiscipline</display-name>
+    <servlet-name>AddDiscipline</servlet-name>
+    <servlet-class>servlet.AddDiscipline</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddDiscipline</servlet-name>
+    <url-pattern>/AddDiscipline</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddWork</display-name>
+    <servlet-name>AddWork</servlet-name>
+    <servlet-class>servlet.AddWork</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddWork</servlet-name>
+    <url-pattern>/AddWork</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TeacherAccess</display-name>
+    <servlet-name>TeacherAccess</servlet-name>
+    <servlet-class>servlet.TeacherAccess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherAccess</servlet-name>
+    <url-pattern>/TeacherAccess</url-pattern>
+  </servlet-mapping>
 </web-app>

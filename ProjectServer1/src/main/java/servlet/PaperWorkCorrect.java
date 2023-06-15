@@ -1,6 +1,7 @@
 package servlet;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,6 +21,13 @@ import classes.ConnectBase;
 /**
  * Servlet implementation class PaperWorkCorrect
  */
+
+@MultipartConfig(location = "C:\\Users\\micad\\Downloads\\учеба\\4 курс\\ВКР\\1\\VKR\\ProjectServer1\\src\\main\\java\\work",
+fileSizeThreshold=1024*1024,
+maxFileSize=1024*1024*50, 
+maxRequestSize=1024*1024*5*5)
+
+
 public class PaperWorkCorrect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,14 +46,14 @@ public class PaperWorkCorrect extends HttpServlet {
 		{
 			request.setCharacterEncoding("Cp1251");
 			response.setCharacterEncoding("Cp1251");
-			StringBuffer requestURL = request.getRequestURL();
-	 	   String completeURL= null;
+//			StringBuffer requestURL = "";
+//	 	   String completeURL= null;
 	 	  String filename=setnameFile(request);
-	 	  if (request.getQueryString() != null) 
-		   {
-		       requestURL.append("?").append(request.getQueryString());
-		        completeURL = requestURL.toString();
-		   }
+//	 	  if (request.getQueryString() != null) 
+//		   {
+//		       requestURL.append("?").append(request.getQueryString());
+//		        completeURL = requestURL.toString();
+//		   }
 	 	   try 
 	 	   {
 	 	   setFileBase(request,filename);
@@ -53,7 +61,7 @@ public class PaperWorkCorrect extends HttpServlet {
 	 	   catch (SQLException e) { 
 			e.printStackTrace();}
 		
-		   response.sendRedirect(completeURL); 
+		   response.sendRedirect("http://localhost:8080/edudoc/"); 
 		}
 		public String setnameFile(HttpServletRequest request)
 		{

@@ -15,7 +15,7 @@
     <jsp:include page="JspFiles/Teacher/header.jsp"/>
     <div class="content">
     <% 
-    int semester=TimeWork.currentSem();
+    		int semester=Integer.parseInt(request.getParameter("semester"));
 			PrintWriter pw = response.getWriter();
 			Connection connect=ConnectBase.GetConnection();
 			Statement statement =ConnectBase.GetStatementBase(connect);

@@ -110,12 +110,12 @@
     if(result.getString("assessment")==null)
    		{ %>
   
-	<tr><td>Оценка:</td><td>Работа не проверена</td></tr>  	 
+	<tr><td>Баллы за работу:</td><td>Работа не проверена</td></tr>  	 
 <%
         }
      else
      {%> 
-    	 <tr><td>Оценка:</td><td><%=resultTeacher.getString("assessment")%></td></tr>
+    	 <tr><td>Баллы за работу:</td><td><%=resultTeacher.getString("assessment")%></td></tr>
      <%}}%>
      
     

@@ -38,8 +38,8 @@ public class DataTeacherWork extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("Cp1251");
-		response.setCharacterEncoding("Cp1251");
+		//request.setCharacterEncoding("Cp1251");
+		//response.setCharacterEncoding("Cp1251");
 		PrintWriter pw = response.getWriter();
 		Connection connect = ConnectBase.GetConnection();
 		Statement statement = ConnectBase.GetStatementBase(connect);

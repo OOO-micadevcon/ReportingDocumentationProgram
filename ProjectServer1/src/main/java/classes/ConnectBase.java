@@ -9,7 +9,6 @@ public class ConnectBase {
 	
 	public static Connection GetConnection()  {
 		
-		//final String URL="jdbc:mysql://mysql104.1gb.ru/gb_storemica?useUnicode=true&characterEncoding=Cp1251&user=gb_storemica&password=Rz9YgHX-UKZD";
 		 final String URL = "jdbc:postgresql://127.0.0.1:5432/edudoc";
 		 final String User = "postgres";
 		 final String Pass = "0000";

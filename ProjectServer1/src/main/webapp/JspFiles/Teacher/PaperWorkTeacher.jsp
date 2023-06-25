@@ -98,13 +98,13 @@ else
       
        if(result.getString("correct_file_work")!=null &&result.getString("assessment")==null)
    		{ %>
-  	    <tr><td>Оценка:</td><td> <input class='text_input' type="text" form="myform" name="assessment"id="assessment" placeholder="Оценка"></td></tr><%;
+  	    <tr><td>Баллы за работу:</td><td> <input class='text_input' type="text" form="myform" name="assessment"id="assessment" placeholder="Баллы за работу"></td></tr><%;
         }
       
      else if(result.getString("assessment")!=null)
      {
      %>
-    	<tr><td>Оценка:</td><td><%=resultTeacher.getString("assessment")%></td></tr>
+    	<tr><td>Баллы за работу:</td><td><%=resultTeacher.getString("assessment")%></td></tr>
     	<%
      }
        if(result.getString("name_file_work")!=null && result.getString("comment")==null || (result.getString("correct_file_work")!=null&&result.getString("assessment")==null))

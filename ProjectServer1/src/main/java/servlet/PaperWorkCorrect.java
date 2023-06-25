@@ -61,7 +61,7 @@ public class PaperWorkCorrect extends HttpServlet {
 	 	   catch (SQLException e) { 
 			e.printStackTrace();}
 		
-		   response.sendRedirect("http://localhost:8080/edudoc/"); 
+		   response.sendRedirect("http://localhost:8080/edudoc/Discipline"); 
 		}
 		public String setnameFile(HttpServletRequest request)
 		{
